@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Landing from '../components/Landing';
 // test
 
 class App extends Component {
@@ -11,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <Header/>
-        <p>Landing</p>
+        <Landing/>
         <Footer/>
       </div>
     );
