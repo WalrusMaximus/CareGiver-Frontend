@@ -28,9 +28,9 @@ export default class Header extends Component {
                     <Search size='small' />
                 </Menu.Item>
                 <Menu.Menu position='right'>
-                        <Menu.Item as={Link} name="profile" to="/profile">Profile</Menu.Item>
-                        <Menu.Item><Signin/></Menu.Item>
-                        <Menu.Item><Signout/></Menu.Item>
+                    <Menu.Item as={Link} name="profile" to="/profile">Profile</Menu.Item>
+                    <Menu.Item><Signin/></Menu.Item>
+                    <Menu.Item><Signout/></Menu.Item>
                 </Menu.Menu>
 
             </Menu>
