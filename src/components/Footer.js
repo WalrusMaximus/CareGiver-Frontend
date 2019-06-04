@@ -15,7 +15,7 @@ export default class Header extends Component {
     render() {
         return (
             <Container textAlign="center" style={footerStyle}>
-                <Segment>Pellentesque habitant morbi tristique senectus.</Segment>
+                <Segment>Made by Walrus and JonR</Segment>
             </Container>
           )
         

@@ -6,6 +6,9 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Landing from '../components/Landing';
 import Profile from '../components/Profile';
+import Search from '../components/Search';
+import Provider from '../components/Provider';
+import Admin from '../components/Admin';
 // test
 
 class App extends Component {
@@ -30,6 +33,36 @@ class App extends Component {
               render={() => {
                 return (
                   <Profile/>
+                )
+              }}
+              />
+          </Switch>
+          <Switch>
+            <Route
+              path="/search"
+              render={() => {
+                return (
+                  <Search/>
+                )
+              }}
+              />
+          </Switch>
+          <Switch>
+            <Route
+              path="/provider"
+              render={() => {
+                return (
+                  <Provider/>
+                )
+              }}
+              />
+          </Switch>
+          <Switch>
+            <Route
+              path="/admin"
+              render={() => {
+                return (
+                  <Admin/>
                 )
               }}
               />

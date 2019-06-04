@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Segment, Card, Image } from 'semantic-ui-react'
 
 
-export default class Profile extends Component {
+export default class Provider extends Component {
 
 
     render() {
@@ -27,10 +27,13 @@ export default class Profile extends Component {
                     </Grid.Column>
                     <Grid.Column width={12}>
                         <Segment>
-                            Posts
+                            Appointments
                         </Segment>
                         <Segment>
-                            Reviews
+                            Schedule
+                        </Segment>
+                        <Segment>
+                            Messages
                         </Segment>
                     </Grid.Column>
                 </Grid>
