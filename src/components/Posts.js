@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Reviews extends Component {
+export default class Post extends Component {
     render() {
         return (
             <div>
-                <p>Reviews</p>
+                <p>Post</p>
             </div>
         )
     }

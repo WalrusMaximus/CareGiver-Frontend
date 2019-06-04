@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import { Grid, Segment, Card, Image } from 'semantic-ui-react'
+import { Grid, Segment } from 'semantic-ui-react'
+import UserCard from './UserCard'
+import Posts from './Posts'
+import Schedule from './Schedule'
 
 
 export default class Profile extends Component {
@@ -11,26 +14,15 @@ export default class Profile extends Component {
                 <Grid centered columns={2}>
                     <Grid.Column centered width={4}>
                     <Segment>
-                        <Card centered>
-                            <Image src='/images/default_avatar.jpg' wrapped ui={false} />
-                            <Card.Content>
-                            <Card.Header>Test</Card.Header>
-                            <Card.Meta>
-                                <span>Stuff</span>
-                            </Card.Meta>
-                            <Card.Description>
-                                About
-                            </Card.Description>
-                            </Card.Content>
-                        </Card>
+                        <UserCard/>
                     </Segment>
                     </Grid.Column>
                     <Grid.Column width={12}>
                         <Segment>
-                            Posts
+                            <Posts/>
                         </Segment>
                         <Segment>
-                            Reviews
+                            <Schedule/>
                         </Segment>
                     </Grid.Column>
                 </Grid>

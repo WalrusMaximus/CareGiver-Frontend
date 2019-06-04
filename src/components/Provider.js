@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { Grid, Segment, Card, Image } from 'semantic-ui-react'
+import { Grid, Segment } from 'semantic-ui-react'
+import UserCard from './UserCard'
+import Appointments from './Appointments'
+import Schedule from './Schedule'
+import Reviews from './Reviews'
 
 
 export default class Provider extends Component {
@@ -11,29 +15,18 @@ export default class Provider extends Component {
                 <Grid centered columns={2}>
                     <Grid.Column centered width={4}>
                     <Segment>
-                        <Card centered>
-                            <Image src='/images/default_avatar.jpg' wrapped ui={false} />
-                            <Card.Content>
-                            <Card.Header>Test</Card.Header>
-                            <Card.Meta>
-                                <span>Stuff</span>
-                            </Card.Meta>
-                            <Card.Description>
-                                About
-                            </Card.Description>
-                            </Card.Content>
-                        </Card>
+                        <UserCard/>
                     </Segment>
                     </Grid.Column>
                     <Grid.Column width={12}>
                         <Segment>
-                            Appointments
+                            <Appointments/>
                         </Segment>
                         <Segment>
-                            Schedule
+                            <Schedule/>
                         </Segment>
                         <Segment>
-                            Messages
+                            <Reviews/>
                         </Segment>
                     </Grid.Column>
                 </Grid>
