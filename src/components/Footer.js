@@ -3,10 +3,10 @@ import { Container, Segment } from 'semantic-ui-react'
 
 
 let footerStyle = {
-    position: "sticky",
-    bottom: 0,
-    left: "0%",
-    right: "0%"
+    position: "fixed",
+    bottom: "0",
+    left: "0",
+    width: "100%",
 }
 
 export default class Header extends Component {
