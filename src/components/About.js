@@ -1,11 +1,21 @@
 import React, { Component } from 'react'
-import { Card, Grid } from 'semantic-ui-react'
+import { Container, Card } from 'semantic-ui-react'
 
+let aboutStyle = {
+    position: "absolute",
+    top: "50%",
+    bottom: "50%",
+    left: "0",
+    right: "0"
+}
 export default class About extends Component {
+    
+
+
     render() {
         return (
             <div>
-                <Grid centered>
+                <Container style={aboutStyle}>
                     <Card centered>
                         <Card.Content>
                             <Card.Header>About Nurture</Card.Header>
@@ -14,7 +24,7 @@ export default class About extends Component {
                             </Card.Description>
                         </Card.Content>
                     </Card>
-                </Grid>
+                </Container>
             </div>
         )
     }

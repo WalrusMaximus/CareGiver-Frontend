@@ -9,20 +9,13 @@ var menuStyle = {
 }
 
 export default class Header extends Component {
-
-
-    handleInput = event => {
-        this.setState({
-          [event.target.name]: event.target.value,
-        });
-      };
         
     render() {
 
         return (
             <Menu style={menuStyle}>
-                <Menu.Item as={Link} name="caregiver" to="/">
-                    <p>CareGiver</p>
+                <Menu.Item as={Link} name="nurture" to="/">
+                    <p>Nurture</p>
                 </Menu.Item>
                 <Menu.Item as={Link} name="Search" to="/search">
                     <Search size='small' />
@@ -30,9 +23,15 @@ export default class Header extends Component {
                 <Menu.Menu position='right'>
                     <Menu.Item as={Link} name="profile" to="/profile">Profile</Menu.Item>
                     <Menu.Item as={Link} name="provider" to="/provider">Provider</Menu.Item>
-                    <Menu.Item as={Link} name="admin" to="/admin">Admin</Menu.Item>
-                    <Menu.Item><Signin/></Menu.Item>
-                    <Menu.Item><Signout/></Menu.Item>
+                    <Menu.Item>
+                        <Signin
+                            handleSignIn={this.props.handleSignIn}
+                            handleInput={this.props.handleInput}
+                        />
+                    </Menu.Item>
+                    <Menu.Item>
+                        <Signout handleSignOut={this.props.handleSignOut}/>
+                    </Menu.Item>
                 </Menu.Menu>
 
             </Menu>

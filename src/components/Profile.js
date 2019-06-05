@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Grid, Segment } from 'semantic-ui-react'
 import UserCard from './UserCard'
 import Posts from './Posts'
-import Schedule from './Schedule'
+import Comments from './Comments'
 
 
 export default class Profile extends Component {
@@ -11,8 +11,8 @@ export default class Profile extends Component {
     render() {
         return (
             <div>
-                <Grid centered columns={2}>
-                    <Grid.Column centered width={4}>
+                <Grid columns={2}>
+                    <Grid.Column width={4}>
                     <Segment>
                         <UserCard/>
                     </Segment>
@@ -22,7 +22,7 @@ export default class Profile extends Component {
                             <Posts/>
                         </Segment>
                         <Segment>
-                            <Schedule/>
+                            <Comments/>
                         </Segment>
                     </Grid.Column>
                 </Grid>
