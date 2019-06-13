@@ -17,7 +17,9 @@ import axios from 'axios';
 class App extends Component {
 
   state = {
-    user: "5cf792dec2a554507a355435",
+    user: {
+
+    },
     isLoggedIn: false,
     userEmail: "",
     userPassword: ""
@@ -65,6 +67,7 @@ class App extends Component {
 
         console.log(this.state.user);
         console.log("Signed in")
+        console.log(this.state.isLoggedIn)
       })
       .catch(err => console.log(err));
   };
@@ -88,6 +91,7 @@ class App extends Component {
           handleSignIn={this.handleSignIn}
           handleSignOut={this.handleSignOut}
           handleInput={this.handleInput}
+          isLoggedIn={this.state.isLoggedIn}
         />
         <div className="body">
           <Switch>

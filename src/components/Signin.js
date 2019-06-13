@@ -10,12 +10,19 @@ export default class Signin extends Component {
   
     show = size => () => this.setState({ size, open: true })
     close = () => this.setState({ open: false })
+
+    login = () => {
+        this.props.handleLogIn
+        this.setState({ open: false})
+        console.log(this.props.isLoggedIn, "prop login")
+        console.log(this.state.isLoggedIn, "state login")
+    }
   
     render() {
         const { open } = this.state
         return (
             <div>
-                <Button color="blue" onClick={this.show('Signin')}>Signin</Button>
+                <Button type="button" color="blue" onClick={this.show('Signin')}>Signin</Button>
                 <Modal open={open} onClose={this.close}>
                 <Modal.Header>Signin Account</Modal.Header>
                 <Modal.Content>
@@ -25,13 +32,13 @@ export default class Signin extends Component {
                     <Form>
                         <Form.Field>
                             <label>Email</label>
-                            <input name="email" placeholder='Email' onChange={this.props.handleInput} />
+                            <input name="userEmail" placeholder='Email' onChange={this.props.handleInput} />
                         </Form.Field>
                         <Form.Field>
                             <label>Password</label>
-                            <input type="password" name='password' placeholder='Password' onChange={this.props.handleInput} />
+                            <input type="password" name='userPassword' placeholder='Password' onChange={this.props.handleInput} />
                         </Form.Field>
-                        <Button type='submit' onClick={this.props.handleSignIn}>Sign In</Button>
+                        <Button type='button' onClick={this.login}>Sign In</Button>
                     </Form>
                 </Modal.Content>
                 <Modal.Content>

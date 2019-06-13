@@ -21,7 +21,7 @@ export default class Signout extends Component {
         const { open } = this.state
         return (
             <div>
-                <Button color="red" onClick={this.show('Signout')}>Signout</Button>
+                <Button type="button" color="red" onClick={this.show('Signout')}>Signout</Button>
                 <Modal open={open} onClose={this.close}>
                 <Modal.Header>Logout Account</Modal.Header>
                 <Modal.Content>
