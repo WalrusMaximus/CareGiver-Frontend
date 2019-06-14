@@ -15,7 +15,9 @@ export default class Provider extends Component {
                 <Grid columns={2}>
                     <Grid.Column width={4}>
                     <Segment>
-                        <UserCard/>
+                        <UserCard
+                        user={this.props.user}
+                        />
                     </Segment>
                     </Grid.Column>
                     <Grid.Column width={12}>

@@ -6,10 +6,10 @@ export default class Signout extends Component {
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
     
-    logout = () => {
-        this.props.handleLogOut
+    signout = () => {
+        this.props.handleSignOut
         this.setState({ open: false})
-        console.log("Working on logout")
+        console.sign("Working on signout")
     }
 
     state = { open: false }
@@ -23,13 +23,13 @@ export default class Signout extends Component {
             <div>
                 <Button type="button" color="red" onClick={this.show('Signout')}>Signout</Button>
                 <Modal open={open} onClose={this.close}>
-                <Modal.Header>Logout Account</Modal.Header>
+                <Modal.Header>Signout Account</Modal.Header>
                 <Modal.Content>
-                    <p>Are you sure you want to log out?</p>
+                    <p>Are you sure you want to sign out?</p>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button negative onClick={this.close}>No, Stay Logged In</Button>
-                    <Button positive onClick={this.logout}>Yes, Logout</Button>
+                    <Button negative onClick={this.close}>No, Stay Signed In</Button>
+                    <Button positive onClick={this.signout}>Yes, Signout</Button>
                 </Modal.Actions>
                 </Modal>
             </div>

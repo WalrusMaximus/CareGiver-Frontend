@@ -20,54 +20,105 @@ class App extends Component {
     user: {
 
     },
-    isLoggedIn: false,
-    userEmail: "",
-    userPassword: ""
+    provider: {
+
+    },
+    isSignedIn: false,
+    email: "",
+    password: "",
+
   }
 
   componentDidMount() {
 
     var userQuery = "http://localhost:3001/api/user/5cf792dec2a554507a355435"
-
     axios({
       method: "get",
       url: userQuery,
     })
       .then(res => {
-        console.log('Got response for the user')
-        console.log(res)
+        this.setState({
+          user: res.data
+        })
+        console.log(this.state.user)
       })
       .catch(() => {
         console.log("failed to get users")
       })
+    axios({
+      method: "get",
+      url: "http://localhost:3001/api/post/"
+    })
+      .then(res => {
+        const posts = [];
+
+        res.data.filter(ele => {
+          return ele.city._id === this.state.cityId;
+        }).map((ele) => {
+          return posts.push(ele);
+        })
+
+        this.setState({
+          posts
+        })
+        console.log(this.state.posts)
+      })
+      .catch(() => {
+        console.log("Couldn't get posts")
+      })
   }
+
+    
 
   handleInput = event => {
     this.setState({
       [event.target.name]: event.target.value,
     });
+    this.getPosts()
+  };
+
+  handleSignUp = event => {
+    event.preventDefault();
+    axios
+      .post("http://localhost:3001/user/signup", {
+        fullName: this.state.fullName,
+        email: this.state.email,
+        userType: this.state.userType,
+        userPassword: this.state.password
+      })
+      .then(response => {
+        localStorage.token = response.data.signedJwt;
+
+        this.setState({
+          isLoggedIn: true,
+          user: response.data.user
+        });
+      })
+      .catch(err => console.log(err));
   };
 
   handleSignIn = event => {
     event.preventDefault();
     console.log("Clicky")
+    console.log(this.state.email)
+    console.log(this.state.password)
 
     axios
-      .post("http://localhost:3001/login", {
-        userEmail: this.state.userEmail,
-        userPassword: this.state.userPassword
+      .post("http://localhost:3001/user/login", {
+        email: this.state.email,
+        password: this.state.password
       })
       .then(response => {
         localStorage.token = response.data.signedJwt;
         this.setState({
-          isLoggedIn: true,
+          isSignedIn: true,
           user: response.data.user,
           profileId: response.data.user._id
         });
 
         console.log(this.state.user);
         console.log("Signed in")
-        console.log(this.state.isLoggedIn)
+        console.log(this.state.isSignedIn)
       })
       .catch(err => console.log(err));
   };
@@ -77,7 +128,7 @@ class App extends Component {
     this.setState({
       userEmail: "",
       userPassword: "",
-      isLoggedIn: false
+      isSignedIn: false
     });
     localStorage.clear();
     window.location.href = "/"
@@ -91,14 +142,17 @@ class App extends Component {
           handleSignIn={this.handleSignIn}
           handleSignOut={this.handleSignOut}
           handleInput={this.handleInput}
-          isLoggedIn={this.state.isLoggedIn}
+          handleSignUp={this.handleSignUp}
+          isSignedIn={this.state.isSignedIn}
+          user={this.state.user}
         />
         <div className="body">
           <Switch>
             <Route
               exact path="/"
               render={() => {
-                return (
+                if (this.state.isSignedIn) 
+                  (
                   <Landing/>
                 )
               }}
@@ -109,7 +163,10 @@ class App extends Component {
               path="/profile"
               render={() => {
                 return (
-                  <Profile/>
+                  <Profile
+                    posts={this.state.posts}
+                    user={this.state.user}
+                  />
                 )
               }}
               />
@@ -129,7 +186,9 @@ class App extends Component {
               path="/provider"
               render={() => {
                 return (
-                  <Provider/>
+                  <Provider
+                  user={this.state.user}
+                  />
                 )
               }}
               />

@@ -7,19 +7,22 @@ import Comments from './Comments'
 
 export default class Profile extends Component {
 
-
     render() {
         return (
             <div>
                 <Grid columns={2}>
                     <Grid.Column width={4}>
                     <Segment>
-                        <UserCard/>
+                        <UserCard
+                        user={this.props.user}
+                        />
                     </Segment>
                     </Grid.Column>
                     <Grid.Column width={12}>
                         <Segment>
-                            <Posts/>
+                            <Posts
+                            posts={this.props.posts}
+                            />
                         </Segment>
                         <Segment>
                             <Comments/>

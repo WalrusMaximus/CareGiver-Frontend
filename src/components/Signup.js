@@ -10,35 +10,36 @@ export default class Signin extends Component {
   
     show = size => () => this.setState({ size, open: true })
     close = () => this.setState({ open: false })
-
-    // signin = () => {
-    //     this.props.handleSignIn()
-    //     this.setState({ open: false})
-    //     console.log(this.props.isSignedIn, "prop signin")
-    //     console.log(this.state.isSignedIn, "state signin")
-    // }
   
     render() {
         const { open } = this.state
         return (
             <div>
-                <Button type="button" color="blue" onClick={this.show('Signin')}>Signin</Button>
+                <Button type="button" color="blue" onClick={this.show('Signin')}>Sign Up</Button>
                 <Modal open={open} onClose={this.close}>
-                <Modal.Header>Signin Account</Modal.Header>
+                <Modal.Header>Create Account</Modal.Header>
                 <Modal.Content>
                     <p>Enter your account information below</p>
                 </Modal.Content>
                 <Modal.Content>
                     <Form>
                         <Form.Field>
+                            <label>Name</label>
+                            <input name="fullName" placeholder='Full Name' onChange={this.props.handleInput} />
+                        </Form.Field>
+                        <Form.Field>
                             <label>Email</label>
                             <input name="email" placeholder='Email' onChange={this.props.handleInput} />
+                        </Form.Field>
+                        <Form.Field>
+                            <label>User Type</label>
+                            <input name="userType" placeholder='Consumer or Provider' onChange={this.props.handleInput} />
                         </Form.Field>
                         <Form.Field>
                             <label>Password</label>
                             <input type="password" name='password' placeholder='Password' onChange={this.props.handleInput} />
                         </Form.Field>
-                        <Button type='button' onClick={this.props.handleSignIn}>Sign In</Button>
+                        <Button type='button' onClick={this.props.handleSignUp}>Sign Up</Button>
                     </Form>
                 </Modal.Content>
                 <Modal.Content>
